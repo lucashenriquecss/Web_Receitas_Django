@@ -7,7 +7,9 @@
         <i class="circle-preloader"></i>
         <img src="{% static 'img/core-img/pizza.png' %}" alt="">
     </div>
-    {% include 'partials/navbar.html' %}
+    {% include 'partials/_busca.html' %}
+    {% include 'partials/_navbar.html' %}
+    
     <!-- Search Wrapper -->
     <div class="search-wrapper">
         <!-- Close Btn -->
@@ -47,16 +49,13 @@
                     </div>
                 {% endfor %}
                 {% else %}
-                 <div class="col-12 col-sm-6 col-lg-4">
-                     <p>Receita não encontrada</p>
-                 </div>
                 {% endif %}
             </div>        
         </div>
      
     </section>
     
-    {% include 'partials/footer.html' %}
+    {% include 'partials/_footer.html' %}
     <!-- ##### Best Receipe Area End ##### -->
 
     <!-- ##### Footer Area Start ##### -->
