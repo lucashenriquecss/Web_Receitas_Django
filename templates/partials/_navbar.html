@@ -53,7 +53,7 @@
                             <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
                         </div>
 
-                        <!-- Nav Start -->
+                        <!-- Nav Start , verificando usuario logado-->
                         <div class="classynav">
                             <ul>
                                 {% if user.is_authenticated %}
@@ -62,7 +62,7 @@
                                     <li><a href="{% url 'criar_receita' %}">Criar receita</a></li>
                                     <li><a href="{% url 'logout' %}">Logout</a></li>
                                 {% else %}
-                                    <li><a href="{% url 'index' %}">Home</a></li>
+                                    
                                     <li><a href="{% url 'cadastro' %}">Cadastro</a></li>
                                     <li><a href="{% url 'login' %}">Login</a></li>
                                 {% endif %}
