@@ -98,3 +98,8 @@ def criar_receita(request):
 
 def campo_vazio(campo):
     return not campo.strip()
+
+def deleta_receita(request, receita_id):
+    receita = get_object_or_404(Receitas, pk=receita_id) #buscando o id da receita para deletar
+    receita.delete()
+    return redirect('dashboard')
