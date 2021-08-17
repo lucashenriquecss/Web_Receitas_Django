@@ -1,0 +1,1 @@
+from .receita import * # modularizando views, melhorando a distribuição do codigo e podendo separar as rotas e funções 
