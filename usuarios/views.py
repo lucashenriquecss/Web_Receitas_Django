@@ -99,7 +99,28 @@ def criar_receita(request):
 def campo_vazio(campo):
     return not campo.strip()
 
+
 def deleta_receita(request, receita_id):
     receita = get_object_or_404(Receitas, pk=receita_id) #buscando o id da receita para deletar
     receita.delete()
+    return redirect('dashboard')
+
+
+def editar_receita(request, receita_id):
+    receita = get_object_or_404(Receitas, pk=receita_id)# Buscando a receita pelo id que queremos editar
+    return render(request, 'usuarios/editar_receita.html', {'receita':receita} )
+    
+def atualiza_receita(request):
+    if request.method == 'POST':
+        receita_id = request.POST['receita_id']
+        re = Receitas.objects.get(pk=receita_id)
+        re.nome_receita = request.POST['nome_receita']
+        re.ingredientes = request.POST['ingredientes']
+        re.modo_preparo = request.POST['modo_preparo']
+        re.tempo_preparo = request.POST['tempo_preparo']
+        re.rendimento = request.POST['rendimento']
+        re.categoria = request.POST['categoria']
+        if 'foto_receita' in request.FILES:#verificando se  tem alguma foto
+            re.foto_receita = request.FILES['foto_receita']
+        re.save()
     return redirect('dashboard')

@@ -7,3 +7,5 @@ class Pessoa(models.Model):
     email = models.EmailField(max_length=200)
     def __str__(self):
         return self.nome
+    class Meta:
+        app_label = 'pessoas'
