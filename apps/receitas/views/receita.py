@@ -10,12 +10,14 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 def index(request):
     receitas = Receitas.objects.order_by('-data_receita').filter(publicada =True) 
-
-    paginator = Paginator(receitas, 3)# Paginação, 6 receitas por pagina
+    paginator = Paginator(receitas, 6)# Paginação, 3 receitas por pagina
     page = request.GET.get('page')
     receitas_por_paginas = paginator.get_page(page)
    
-    return render(request,'receitas/index.html', {'receitas': receitas_por_paginas})
+    dados = {
+        'receitas' : receitas_por_paginas
+    }
+    return render(request,'receitas/index.html', dados)
 
 
 def receita(request,receita_id):

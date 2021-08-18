@@ -2,8 +2,10 @@ from pessoas.models import Pessoa
 from django.shortcuts import redirect, render,get_object_or_404
 from django.contrib import auth, messages
 from receitas.models import Receitas
+from django.contrib.auth.models import User
 # Create your views here.
 def cadastro(request): # metodo post para cadastrar usuarios
+    """CADASTRA UMA NOVA PESSOA NO SISTEMA"""
     if request.method == 'POST':
         nome = request.POST['nome']
         email = request.POST['email']
@@ -39,6 +41,7 @@ def cadastro(request): # metodo post para cadastrar usuarios
 
 
 def login(request):
+    """realiza o login do usuario"""
     if request.method == 'POST': # mesmo metodo de verificação do cadastro
         email = request.POST['email']
         senha = request.POST['senha']
@@ -57,12 +60,12 @@ def login(request):
     return render(request,'usuarios/login.html')
 
 
-def logout(request):
+def logout(request): 
     auth.logout(request)#saida do usuario
     return redirect('index')
 
 def dashboard(request):
-    #verificar se usuario esta logado
+    """#verificar se usuario esta logado"""
     if request.user.is_authenticated: 
         id = request.user.id#se o usuario for autenticado  pegue o id
         receitas= Receitas.objects.order_by('-data_receita').filter(

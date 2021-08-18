@@ -1,7 +1,7 @@
 
 
 from pathlib import Path
-import os
+import os, sys
 
 from django.core.checks.messages import WARNING
 
@@ -134,6 +134,10 @@ MESSAGE_TAGS = {
     messages.WARNING: 'warning',
     
 }
+
+
+PROJEC_ROOT =os.path.dirname(__file__)
+sys.path.insert(0, os.path.join(PROJEC_ROOT,'../apps')) # mudando os apps de local
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
